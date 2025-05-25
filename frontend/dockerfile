@@ -1,0 +1,14 @@
+FROM node:20
+
+# # 作業ディレクトリ
+WORKDIR /app
+
+# 依存だけ先にインストール（キャッシュ効率◎）
+COPY package.json yarn.lock ./
+RUN yarn install
+
+# アプリコードを全コピー
+COPY . .
+
+# Next.jsの開発サーバー起動
+CMD ["yarn", "dev"]

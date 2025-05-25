@@ -1,0 +1,17 @@
+FROM golang:1.23
+
+# 作業ディレクトリ指定
+WORKDIR /app
+
+# 依存ファイルだけコピーして先にgo mod download（キャッシュ効率化）
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Airをグローバルにインストール（ホットリロードツール
+RUN go install github.com/cosmtrek/air@latest
+
+# 残りのコードを全コピー
+COPY . .
+
+# Air経由でアプリをホットリロード起動
+CMD ["air"]
