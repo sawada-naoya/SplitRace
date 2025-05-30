@@ -1,6 +1,7 @@
 package handler
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -20,10 +21,17 @@ func NewTaskHandler(ts usecase.TaskUsecase) *TaskHandler {
 }
 
 func (h *TaskHandler) RunTasks(c echo.Context) error {
-	var req dto.RunTasckRequest
+	var req dto.RunTaskRequest
 	if err := c.Bind(&req); err != nil || req.Count <= 0 {
 		return c.JSON(http.StatusBadRequest, map[string]string{
 			"error": "Invalid request",
+		})
+	}
+
+	log.Println("受信したリクエスト:", req)
+	if req.Count <= 0 {
+		return c.JSON(http.StatusBadRequest, map[string]string{
+			"error": "Invalid count value",
 		})
 	}
 

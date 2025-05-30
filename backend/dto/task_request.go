@@ -1,5 +1,5 @@
 package dto
 
-type RunTasckRequest struct {
+type RunTaskRequest struct {
 	Count int `json:"count"`
 }
