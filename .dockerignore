@@ -1,0 +1,6 @@
+# 共通的な例
+node_modules
+.git
+tmp
+.vscode
+.DS_Store

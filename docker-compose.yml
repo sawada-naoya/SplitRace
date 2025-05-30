@@ -1,0 +1,22 @@
+version: "3.8"
+
+services:
+  backend:
+    build: ./backend # backend/Dockerfileをビルド
+    volumes:
+      - ./backend:/app # ローカルファイルとコンテナの同期（ホットリロード対応）
+    working_dir: /app # 作業ディレクトリ
+    ports:
+      - "8080:8080" # Go API用のポート
+    command: air # hot reloadツールを使ってGoファイルの変更を即反映
+    depends_on:
+      - frontend
+
+  frontend:
+    build: ./frontend # frontend/Dockerfileをビルド
+    volumes:
+      - ./frontend:/app # 同じくローカルと同期
+    working_dir: /app
+    ports:
+      - "3000:3000" # Next.jsの開発用ポート
+    command: yarn dev # Next.js開発サーバーを起動
