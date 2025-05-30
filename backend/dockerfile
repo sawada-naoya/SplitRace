@@ -8,7 +8,8 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 # Airをグローバルにインストール（ホットリロードツール
-RUN go install github.com/cosmtrek/air@latest
+RUN go install github.com/cosmtrek/air@v1.40.4
+
 
 # 残りのコードを全コピー
 COPY . .

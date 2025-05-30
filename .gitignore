@@ -1,0 +1,45 @@
+# === Go関連 ===
+/backend/bin/
+/backend/vendor/
+/backend/di/wire_gen.go
+*.exe
+*.out
+*.test
+*.log
+*.tmp
+*.swp
+
+# === Node.js (Next.js フロント) ===
+/frontend/node_modules/
+/frontend/.next/
+/frontend/.turbo/
+/frontend/dist/
+/frontend/out/
+frontend/yarn-error.log
+frontend/npm-debug.log
+
+# === 環境ファイル（必要に応じて）===
+.env
+.env.*
+
+# === Docker関連 ===
+*.tar
+*.pid
+docker-compose.override.yml
+
+# === IDE・OS 由来ファイル ===
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# === テスト/ビルド生成物 ===
+coverage/
+*.coverprofile
+*.testresult
+
+# === その他 ===
+*.bak
+*.old
+*.orig
